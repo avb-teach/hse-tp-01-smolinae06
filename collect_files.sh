@@ -12,10 +12,10 @@ files_copying(){
     local from_dir="$1"
     local to_dir="$2"
     for element in "$from_dir"/*; do
+        local name="${element##*/}"
+        local to_file="$to_dir/$name"
         if test -f "$element"; then
             local k=1
-            local name="${element##*/}"
-            local to_file="$to_dir/$name"
             while test -e "$to_file"; do
                 to_file="$(
                     echo "${to_dir}/"
@@ -27,8 +27,8 @@ files_copying(){
             cp "$element" "$to_file"
             
         elif test -d "$element"; then
-            mkdir -p "$to_dir/"${element##*/}""
-            files_copying "$element" "$to_dir/"${element##*/}""
+            mkdir -p "$to_file"
+            files_copying "$element" "$to_file"
         fi
     done
 }
