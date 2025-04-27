@@ -21,5 +21,5 @@ if test ! -d "$output_dir"; then
    mkdir "$output_dir"
 fi
 
-cp -R "$input_dir/" "$output_dir/"
+rsync -r "$input_dir/" "$output_dir/"
 echo "Все файлы скопированы из "$input_dir" в "$output_dir""
