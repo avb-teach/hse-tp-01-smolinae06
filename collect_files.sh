@@ -8,15 +8,6 @@ fi
 input_dir="$1"
 output_dir="$2"
 
-if test ! -d "$input_dir"; then
-    echo "Ошибка: входная директория "$input_dir" не существует"
-    exit 1
-fi
-
-if test ! -d "$output_dir"; then
-    mkdir -p "$output_dir"
-fi
-
 files_copying() {
     local from_dir="$1"
     local to_dir="$2"
