@@ -13,6 +13,10 @@ if test ! -d "$input_dir"; then
     exit 1
 fi
 
+if test ! -d "$output_dir"; then
+    mkdir "$output_dir"
+fi
+
 files_copying() {
     local from_dir="$1"
     local to_dir="$2"
