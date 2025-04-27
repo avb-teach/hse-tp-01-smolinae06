@@ -14,14 +14,14 @@ if test ! -d "$input_dir"; then
 fi
 
 if test ! -d "$output_dir"; then
-    mkdir "$output_dir"
+    mkdir -p "$output_dir"
 fi
 
 files_copying() {
     local from_dir="$1"
     local to_dir="$2"
     for element in "$from_dir"/*; do
-        if test -f "element"; then
+        if test -f "$element"; then
             local name=$(basename "$element")
             local to_file="$to_dir/$name"
             local k=1
