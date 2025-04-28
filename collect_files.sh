@@ -13,10 +13,7 @@ unique_name() {
     local dir="$2"
     local new_name="$cur_name"
     while test -e "$dir/$new_name"; do
-                new_name="$(
-                    echo "${cur_name%.*}.$k."
-                    echo "${cur_name##*.}"
-                )"
+                new_name="${cur_name%.*}.$k.${cur_name##*.}"
                 ((k+=1))
             done
             echo "$new_name"
