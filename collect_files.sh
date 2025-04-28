@@ -21,7 +21,7 @@ files_copying() {
             done
             cp "$element" "$to_file"
 
-        elif test -d "$element"; then
+        else 
             mkdir -p "$to_file"
             files_copying "$element" "$to_file"
         fi
