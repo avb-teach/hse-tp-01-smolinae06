@@ -8,10 +8,10 @@ parametrs_check() {
 }
 
 unique_name() {
-    local k = 1
-    local cur_name = "$1"
-    local dir = "$2"
-    local new_name = "$cur_name"
+    local k=1
+    local cur_name="$1"
+    local dir="$2"
+    local new_name="$cur_name"
     while test -e "$dir/$new_name"; do
                 new_name="$(
                     echo "${cur_name%.*}.$k."
@@ -29,7 +29,7 @@ files_copying() {
         local name="${element##*/}"
         local to_file="$to_dir/$name"
         if test -f "$element"; then
-            to_file = $(unique_name "$name" "$to_dir")
+            to_file=$(unique_name "$name" "$to_dir")
             cp "$element" "$to_file"
            
         elif test -d "$element"; then
