@@ -14,10 +14,11 @@ files_copying() {
         local name="${element##*/}"
         local to_file=$(printf "%s/%s" "$to_dir" "$name")
         if test -f "$element"; then
-            local k=1
+            local suff=1
             while test -e "$to_file"; do
-                to_file=$(printf "%s/%s.%d.%s" "$to_dir" "${name%.*}" "$k" "${name##*.}")
-                ((k+=1))
+                local new_name = $(printf "%s.%s.%s" "${name%.*}" "$suff" "${name##*.}")
+                to_file=$(printf "%s/%s" "$to_dir" "$new_name")
+                ((suff+=1))
             done
             cp "$element" "$to_file"
         elif test -d "$element"; then
