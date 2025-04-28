@@ -20,7 +20,6 @@ files_copying() {
                 ((k+=1))
             done
             cp "$element" "$to_file"
-
         elif test -d "$element"; then
             mkdir -p "$to_file"
             files_copying "$element" "$to_file"
