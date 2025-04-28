@@ -12,15 +12,11 @@ files_copying() {
     local to_dir="$2"
     for element in "$from_dir"/*; do
         local name="${element##*/}"
-        local to_file="$to_dir/$name"
+        local to_file=$(printf "%s/%s" "$to_dir" "$name")
         if test -f "$element"; then
             local k=1
             while test -e "$to_file"; do
-                to_file="$(
-                    echo "${to_dir}/"
-                    echo "${name%.*}.$k."
-                    echo "${name##*.}"
-                )"
+                to_file=$(printf "%s/%s.%d.%s" "$to_dir" "${name%.*}" "$k" "${name##*.}")
                 ((k+=1))
             done
             cp "$element" "$to_file"
